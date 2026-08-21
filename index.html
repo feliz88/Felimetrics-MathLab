@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MathLab</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header>
+        <h1>MathLab</h1>
+        <p>Interactive Calculus, Probability & Statistics Calculator</p>
+    </header>
+
+
+    <!-- =========================================
+         MODULE NAVIGATION
+    ========================================== -->
+
+    <nav class="module-nav">
+
+        <button class="module-btn active" data-module="basic">
+            Basic
+        </button>
+
+        <button class="module-btn" data-module="calculus">
+            Calculus
+        </button>
+
+        <button class="module-btn" data-module="probability">
+            Probability
+        </button>
+
+        <button class="module-btn" data-module="statistics">
+            Statistics
+        </button>
+
+    </nav>
+
+
+    <main>
+
+
+        <!-- =========================================
+             BASIC CALCULATOR
+        ========================================== -->
+
+        <section id="basic" class="module active-module">
+
+            <div class="calculator">
+
+                <h2>Basic Calculator</h2>
+
+                <input
+                    type="text"
+                    id="display"
+                    placeholder="Enter a calculation..."
+                >
+
+                <div class="buttons">
+
+                    <button>7</button>
+                    <button>8</button>
+                    <button>9</button>
+                    <button>/</button>
+
+                    <button>4</button>
+                    <button>5</button>
+                    <button>6</button>
+                    <button>*</button>
+
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>-</button>
+
+                    <button>0</button>
+                    <button>.</button>
+                    <button id="clear">C</button>
+                    <button>+</button>
+
+                    <button id="equals">=</button>
+
+                </div>
+
+            </div>
+
+
+            <div class="result">
+
+                <h2>Result</h2>
+
+                <p id="result">
+                    Your answer will appear here.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             CALCULUS MODULE
+        ========================================== -->
+
+        <section id="calculus" class="module">
+
+            <div class="module-card">
+
+                <h2>Calculus Engine</h2>
+
+                <p>
+                    Perform basic numerical calculus calculations.
+                </p>
+
+
+                <label for="calculus-operation">
+                    Operation
+                </label>
+
+                <select id="calculus-operation">
+
+                    <option value="evaluate">
+                        Evaluate Function
+                    </option>
+
+                    <option value="derivative">
+                        Numerical Derivative
+                    </option>
+
+                    <option value="integral">
+                        Definite Integral
+                    </option>
+
+                    <option value="limit">
+                        Numerical Limit
+                    </option>
+
+                </select>
+
+
+                <label for="calculus-function">
+                    Function f(x)
+                </label>
+
+                <input
+                    type="text"
+                    id="calculus-function"
+                    placeholder="Example: x^2 + 2*x + 1"
+                >
+
+
+                <!-- X VALUE -->
+
+                <div id="calculus-x-container">
+
+                    <label for="calculus-x">
+                        x value
+                    </label>
+
+                    <input
+                        type="number"
+                        id="calculus-x"
+                        placeholder="Example: 2"
+                        step="any"
+                    >
+
+                </div>
+
+
+                <!-- INTEGRATION LIMITS -->
+
+                <div
+                    id="calculus-integral-container"
+                    style="display: none;"
+                >
+
+                    <label for="calculus-lower">
+                        Lower limit
+                    </label>
+
+                    <input
+                        type="number"
+                        id="calculus-lower"
+                        placeholder="Example: 0"
+                        step="any"
+                    >
+
+
+                    <label for="calculus-upper">
+                        Upper limit
+                    </label>
+
+                    <input
+                        type="number"
+                        id="calculus-upper"
+                        placeholder="Example: 1"
+                        step="any"
+                    >
+
+                </div>
+
+
+                <!-- LIMIT POINT -->
+
+                <div
+                    id="calculus-limit-container"
+                    style="display: none;"
+                >
+
+                    <label for="calculus-limit-point">
+                        x approaches
+                    </label>
+
+                    <input
+                        type="number"
+                        id="calculus-limit-point"
+                        placeholder="Example: 2"
+                        step="any"
+                    >
+
+                </div>
+
+
+                <button id="calculus-calculate">
+                    Calculate
+                </button>
+
+
+                <!-- CALCULUS RESULT -->
+
+                <div class="output">
+
+                    <h3>Result</h3>
+
+                    <div id="calculus-result">
+
+                        <p>
+                            Your calculus result will appear here.
+                        </p>
+
+                    </div>
+
+        <!-- CALCULUS GRAPH -->
+
+<div class="graph-card">
+
+    <h3>Function Graph</h3>
+
+    <div class="graph-options">
+
+        <label>
+            <input
+                type="checkbox"
+                id="show-derivative"
+            >
+
+            Show derivative
+        </label>
+
+    </div>
+
+    <canvas
+        id="calculus-graph"
+        width="700"
+        height="450"
+    ></canvas>
+
+    <div class="graph-controls">
+
+        <button id="graph-reset">
+            Reset Graph
+        </button>
+
+        <button id="graph-zoom-in">
+            Zoom In
+        </button>
+
+        <button id="graph-zoom-out">
+            Zoom Out
+        </button>
+
+    </div>
+
+</div>
+</section>
+
+
+        <!-- =========================================
+             PROBABILITY MODULE
+        ========================================== -->
+
+        <section id="probability" class="module">
+
+            <div class="module-card">
+
+                <h2>Probability Engine</h2>
+
+                <p>
+                    Calculate probabilities, factorials,
+                    combinations, permutations and conditional probability.
+                </p>
+
+
+                <label for="probability-operation">
+                    Operation
+                </label>
+
+                <select id="probability-operation">
+
+                    <option value="basic">
+                        Basic Probability
+                    </option>
+
+                    <option value="factorial">
+                        Factorial
+                    </option>
+
+                    <option value="combination">
+                        Combination (nCr)
+                    </option>
+
+                    <option value="permutation">
+                        Permutation (nPr)
+                    </option>
+
+                    <option value="binomial">
+                        Binomial Distribution
+                    </option>
+
+                    <option value="normal">
+                        Normal Distribution
+                    </option>
+
+                    <option value="conditional">
+                        Conditional Probability
+                    </option>
+
+                </select>
+
+
+                <!-- BASIC PROBABILITY -->
+
+                <div id="basic-probability-inputs">
+
+                    <input
+                        type="number"
+                        id="favourable-outcomes"
+                        placeholder="Favourable outcomes"
+                    >
+
+                    <input
+                        type="number"
+                        id="total-outcomes"
+                        placeholder="Total outcomes"
+                    >
+
+                </div>
+
+
+                <!-- FACTORIAL -->
+
+                <div
+                    id="factorial-inputs"
+                    style="display: none;"
+                >
+
+                    <input
+                        type="number"
+                        id="factorial-n"
+                        placeholder="n"
+                    >
+
+                </div>
+
+
+                <!-- COMBINATION / PERMUTATION -->
+
+                <div
+                    id="nr-inputs"
+                    style="display: none;"
+                >
+
+                    <input
+                        type="number"
+                        id="probability-n"
+                        placeholder="n"
+                    >
+
+                    <input
+                        type="number"
+                        id="probability-r"
+                        placeholder="r"
+                    >
+
+                </div>
+
+
+                <!-- CONDITIONAL PROBABILITY -->
+
+                <div
+                    id="conditional-inputs"
+                    style="display: none;"
+                >
+
+                    <input
+                        type="number"
+                        id="intersection-probability"
+                        placeholder="P(A ∩ B)"
+                        step="any"
+                    >
+
+                    <input
+                        type="number"
+                        id="condition-probability"
+                        placeholder="P(B)"
+                        step="any"
+                    >
+
+                </div>
+
+
+                <!-- BINOMIAL DISTRIBUTION -->
+
+                <div
+                    id="binomial-inputs"
+                    style="display: none;"
+                >
+
+                    <label for="binomial-type">
+                        Probability Type
+                    </label>
+
+                    <select id="binomial-type">
+
+                        <option value="exact">
+                            P(X = k)
+                        </option>
+
+                        <option value="less">
+                            P(X ≤ k)
+                        </option>
+
+                        <option value="greater">
+                            P(X ≥ k)
+                        </option>
+
+                    </select>
+
+
+                    <input
+                        type="number"
+                        id="binomial-n"
+                        placeholder="Number of trials (n)"
+                    >
+
+                    <input
+                        type="number"
+                        id="binomial-k"
+                        placeholder="Number of successes (k)"
+                    >
+
+                    <input
+                        type="number"
+                        id="binomial-p"
+                        placeholder="Probability of success (p)"
+                        step="any"
+                        min="0"
+                        max="1"
+                    >
+
+                </div>
+
+
+                <!-- NORMAL DISTRIBUTION -->
+
+                <div
+                    id="normal-inputs"
+                    style="display: none;"
+                >
+
+                    <label for="normal-type">
+                        Probability Type
+                    </label>
+
+                    <select id="normal-type">
+
+                        <option value="less">
+                            P(X ≤ x)
+                        </option>
+
+                        <option value="greater">
+                            P(X ≥ x)
+                        </option>
+
+                        <option value="between">
+                            P(a ≤ X ≤ b)
+                        </option>
+
+                    </select>
+
+
+                    <input
+                        type="number"
+                        id="normal-mean"
+                        placeholder="Mean (μ)"
+                        step="any"
+                    >
+
+                    <input
+                        type="number"
+                        id="normal-sd"
+                        placeholder="Standard deviation (σ)"
+                        step="any"
+                        min="0"
+                    >
+
+                    <input
+                        type="number"
+                        id="normal-x"
+                        placeholder="x"
+                        step="any"
+                    >
+
+                    <input
+                        type="number"
+                        id="normal-upper"
+                        placeholder="Upper value (b)"
+                        step="any"
+                        style="display: none;"
+                    >
+
+                </div>
+
+
+                <!-- CALCULATE -->
+
+                <button id="probability-calculate">
+                    Calculate
+                </button>
+
+                <!-- PROBABILITY RESULT -->
+
+<div class="output">
+
+    <h3>Result</h3>
+
+    <p id="probability-result">
+        Your probability result will appear here.
+    </p>
+
+</div>
+
+
+<!-- NORMAL DISTRIBUTION GRAPH -->
+
+<div
+    id="normal-graph-container"
+    class="graph-card"
+    style="display: none;"
+>
+
+    <h3>Normal Distribution Graph</h3>
+
+    <canvas
+        id="normal-distribution-graph"
+        width="700"
+        height="450"
+    ></canvas>
+
+    <div class="graph-controls">
+
+        <button id="normal-graph-reset">
+            Reset Graph
+        </button>
+
+    </div>
+
+</div>
+<!-- =========================================
+     BINOMIAL DISTRIBUTION GRAPH
+========================================= -->
+
+<div class="graph-card" id="binomial-graph-card">
+
+    <h3>Binomial Distribution Graph</h3>
+
+    <canvas
+        id="binomial-graph"
+        width="700"
+        height="450"
+    ></canvas>
+
+    <div class="graph-controls">
+
+        <button id="binomial-graph-reset">
+            Reset Graph
+        </button>
+
+    </div>
+
+</div>
+<div class="graph-legend" id="binomial-legend">
+
+    <button
+        type="button"
+        class="legend-item active"
+        data-legend="selected"
+    >
+        <span class="legend-box selected"></span>
+        Selected probability
+    </button>
+
+    <button
+        type="button"
+        class="legend-item active"
+        data-legend="distribution"
+    >
+        <span class="legend-box distribution"></span>
+        Distribution
+    </button>
+
+    <button
+        type="button"
+        class="legend-item active"
+        data-legend="mean"
+    >
+        <span class="legend-line mean"></span>
+        Mean (μ)
+    </button>
+
+    <button
+        type="button"
+        class="legend-item active"
+        data-legend="sd"
+    >
+        <span class="legend-line sd"></span>
+        ±1 Standard Deviation
+    </button>
+
+</div>
+</div>
+        </section>
+
+<!-- =========================================
+     STATISTICS MODULE
+========================================= -->
+
+<section id="statistics" class="module">
+
+    <!-- =========================================
+         DESCRIPTIVE STATISTICS
+    ========================================== -->
+
+    <div class="module-card">
+
+        <h2>Descriptive Statistics</h2>
+
+        <p>
+            Enter numerical data separated by commas.
+        </p>
+
+        <label for="statistics-data">
+            Dataset
+        </label>
+
+        <textarea
+            id="statistics-data"
+            placeholder="Example: 12, 15, 18, 18, 20, 25, 30"
+        ></textarea>
+
+        <button id="statistics-calculate">
+            Analyze Data
+        </button>
+
+    </div>
+
+
+    <!-- =========================================
+         STATISTICAL RESULTS
+    ========================================== -->
+
+    <div class="module-card">
+
+        <h2>Statistical Results</h2>
+
+        <div id="statistics-result">
+
+            <p>
+                Your statistical results will appear here.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         FIVE-NUMBER SUMMARY
+    ========================================== -->
+
+    <div class="module-card">
+
+        <h2>Five-Number Summary</h2>
+
+        <div id="five-number-summary">
+
+            <p>
+                Q1, Median and Q3 will appear here.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         STATISTICS GRAPH
+    ========================================== -->
+
+    <div class="graph-card">
+
+        <h2>Statistical Graph</h2>
+
+        <p>
+            Visualize your dataset using a histogram,
+            frequency polygon, or ogive.
+        </p>
+
+
+        <!-- GRAPH TYPE -->
+
+        <div class="graph-options">
+
+            <label for="statistics-graph-type">
+                Graph Type
+            </label>
+
+            <select id="statistics-graph-type">
+
+                <option value="histogram">
+                    Histogram
+                </option>
+
+                <option value="frequency">
+                    Frequency Polygon
+                </option>
+
+                <option value="boxplot">
+                    Box Plot
+                </option>
+
+                <option value="ogive">
+                    Ogive
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- GRAPH CANVAS -->
+
+        <canvas
+            id="statistics-graph"
+            width="700"
+            height="450"
+        ></canvas>
+
+
+        <!-- GRAPH CONTROLS -->
+
+        <div class="graph-controls">
+
+            <button id="statistics-graph-reset">
+                Reset Graph
+            </button>
+
+            <button id="statistics-graph-zoom-in">
+                Zoom In
+            </button>
+
+            <button id="statistics-graph-zoom-out">
+                Zoom Out
+            </button>
+
+        </div>
+
+
+        <!-- GRAPH LEGEND -->
+
+        <div
+            id="statistics-graph-legend"
+            class="graph-legend"
+        >
+
+            <p>
+                Select a graph type to begin.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+    </main>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="app.js"></script>
+    <script src="calculus.js"></script>
+    <script src="probability.js"></script>
+    <script src="statistics.js"></script>
+    
+    <script src="graph.js"></script>
+    <script src="normal-graph.js"></script>
+    <script src="binomial-graph.js"></script>
+    <script src="statistics-graph.js"></script>
+
+</body>
+
+</html>

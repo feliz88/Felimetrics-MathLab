@@ -1,0 +1,22 @@
+{
+  "name": "mathlab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts":  {
+    "dev": "vite",
+    "build": "vite",
+    "preview": "vite preview"
+    
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "math.js": "^1.1.46"
+  },
+  "devDependencies": {
+    "vite": "^8.2.1"
+  }
+}
